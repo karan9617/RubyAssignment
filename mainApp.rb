@@ -25,6 +25,34 @@ class List
     self
   end
 
+  def mergeList(xList,yList)
+    resultArray = []
+    i = 0; j =0
+    while(i < (xList.length) && j < (yList.length))
+      if(xList[i] < yList[j])
+        resultArray << xList[i]
+        i+=1
+      else
+        resultArray << yList[j]
+        j+=1
+      end
+
+    end
+    while(i < (xList.length))
+      resultArray << xList[i]
+      i+=1
+    end
+    while(j < (yList.length))
+      resultArray << yList[j]
+      j+=1
+    end
+    resultArray
+  end
+
+  def copyXinY(xList,yList)
+
+  end
+
   def to_s
     puts "X: #{@X} \n Y: #{@Y} \n Z: #{@Z}"
   end
@@ -123,7 +151,13 @@ class PerformOperations
       when 'r'
         listObj.rotate.to_s
       when 's'
-        listObj.switchXandY
+        listObj.switchXandY.to_s
+      when 'm'
+        listObj.X = listObj.mergeList(listObj.X, listObj.Y)
+        puts listObj.to_s
+      when 'c'
+        listObj.X = listObj.copyXinY(listObj.X, listObj.Y)
+        puts listObj.to_s
       when 'l i'
         listObj.rotate.to_s
       when 'p'
